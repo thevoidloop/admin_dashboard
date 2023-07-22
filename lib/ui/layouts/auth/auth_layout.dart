@@ -18,7 +18,7 @@ class AuthLayout extends StatelessWidget {
           physics: const ClampingScrollPhysics(),
           children: [
             (size.width > 1000) ? _DesktopBody(child: child) : _MobileBody(child: child),
-            LinksBar(),
+            const LinksBar(),
           ],
         ),
       ),
@@ -30,7 +30,6 @@ class _MobileBody extends StatelessWidget {
   final Widget child;
 
   const _MobileBody({
-    super.key,
     required this.child,
   });
 
@@ -41,9 +40,9 @@ class _MobileBody extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(height: 20),
-          CustomTitle(),
-          Container(
+          const SizedBox(height: 20),
+          const CustomTitle(),
+          SizedBox(
             width: double.infinity,
             height: 420,
             child: child,
@@ -52,7 +51,7 @@ class _MobileBody extends StatelessWidget {
               color: Colors.black45,
               width: double.infinity,
               height: 420,
-              child: Row(
+              child: const Row(
                 children: [BackgroudApp()],
               ))
         ],
@@ -63,13 +62,13 @@ class _MobileBody extends StatelessWidget {
 
 class _DesktopBody extends StatelessWidget {
   final Widget child;
-  const _DesktopBody({super.key, required this.child});
+  const _DesktopBody({required this.child});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return Container(
+    return SizedBox(
       width: size.width,
       height: size.height * 0.93,
       child: Row(
